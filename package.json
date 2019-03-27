@@ -2,10 +2,10 @@
   "name": "the3wondersoftheworld",
   "version": "1.0.0",
   "description": "node.js autocomplete project",
-  "main": "./src/index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon /src/server.js"
+    "start": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
