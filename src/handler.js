@@ -1,11 +1,6 @@
-const server = require('./server.js');
-// function handler(request, response){
-//     const endpoint = request.url;
-//     console.log(endpoint);
-
-//     const method = request.method;
-//     console.log(method);
-// }
+// const server = require('./server.js');
+const fs = require('fs');
+const path = require('path');
 
 const handler = module.exports = {};
 // const data = require('./data.json');
@@ -15,10 +10,20 @@ const headers = {
 }
 
 handler.home = (request, response) => {
-    response.writeHead(200, headers);
-    response.write("home");
-    console.log("home sometinf");
-    response.end();
+    const filePath = path.join(__dirname, '..', 'public/index.html');
+    console.log(filePath);
+    fs.readFile(filePath, (error, file) => {
+      console.log(file);
+      if(error) {
+        response.writeHead(500, headers);
+        console.log(error);
+        response.end("<h1>This is an error page. Ooops.</h1>");
+      } else {
+        response.writeHead(200, headers);
+        console.log("this is the file")
+      response.end(file);
+    }
+  });
 };
 
 handler.notFound = (request, response) => {

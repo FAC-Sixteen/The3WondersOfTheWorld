@@ -12,4 +12,5 @@ const routeFunc = (request, response) => {
         routes[404](request, response);
     }
 };
-module.exports = routeFunc; 
+
+module.exports = routeFunc;
